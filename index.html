@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-------------------------------------------------
+        Title
+    --------------------------------------------------->
+    <title>FotoEstudioCampos</title>
+
+    <!-------------------------------------------------
+       Link Favicon
+    -------------------------------------------------->
+    <link rel="icon" type="image/png" href="assets/images/Foto.png" />
+
+    <!---------------------------------------------------
+       Font Awesome Cdn For Icons
+    ----------------------------------------------------->
+    <script
+      src="https://kit.fontawesome.com/8769ee6e50.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!---------------------------------------------------
+       Link External Custom Style Sheets
+    ----------------------------------------------------->
+    <link rel="stylesheet" href="css/utils.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media-queries.css" />
+  </head>
+
+  <body>
+
+    <!-- Botón flotante y ventana de chat de WhatsApp -->
+<
+<a id="whatsapp-button" class="whatsapp-float">
+  <i class="fa fa-whatsapp"></i>
+</a>
+
+<!-- Ventana de chat de WhatsApp -->
+<div class="whatsapp-chat">
+  <div class="chat-header">
+    <img src="assets/images/Foto.png" alt="Avatar" class="chat-avatar" />
+    <div class="chat-info">
+      <strong>FotoEstudioCampos</strong><br />
+      Disponible
+    </div>
+    <span class="chat-close">&times;</span>
+  </div>
+  <div class="chat-body">
+    <div class="chat-message incoming">Hola 👋 ¿Cómo podemos ayudarte?</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." />
+    <button id="send-btn">➤</button>
+  </div>
+</div>
+
+
+<!-- Botón flotante de Ubicación -->
+<a href="https://share.google/6krdF9ky3DSevS8m9" 
+   class="location-float" target="_blank" aria-label="Ver ubicación en Google Maps">
+  <i class="fa fa-map-marker"></i>
+</a>
+
+<style>
+/* Botón flotante WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 90px; /* arriba del de ubicación */
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+/* Ventana de chat */
+.whatsapp-chat {
+  position: fixed;
+  bottom: 160px; /* se sube porque el botón ya está a 90px */
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+/* Header */
+.chat-header {
+  background: #25d366;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.chat-header .chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.chat-header .chat-info {
+  flex-grow: 1;
+}
+.chat-header .chat-close {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Body */
+.chat-body {
+  padding: 10px;
+  background: #f0f0f0;
+  height: 150px;
+  overflow-y: auto;
+}
+.chat-message {
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  max-width: 80%;
+}
+.incoming {
+  background: #e1ffc7;
+}
+
+/* Footer */
+.chat-footer {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+.chat-footer input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+.chat-footer button {
+  background: #25d366;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Botón flotante Ubicación */
+.location-float {
+  position: fixed;
+  bottom: 20px; /* debajo del de WhatsApp */
+  right: 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.location-float:hover {
+  transform: scale(1.1);
+  background-color: #c0392b;
+}
+</style>
+
+<script>
+const whatsappButton = document.getElementById('whatsapp-button');
+const whatsappChat = document.querySelector('.whatsapp-chat');
+const chatClose = document.querySelector('.chat-close');
+const sendBtn = document.getElementById('send-btn');
+const chatInput = document.getElementById('chat-input');
+
+whatsappButton.addEventListener('click', () => {
+  whatsappChat.style.display = 'flex';
+});
+
+chatClose.addEventListener('click', () => {
+  whatsappChat.style.display = 'none';
+});
+
+sendBtn.addEventListener('click', () => {
+  const message = chatInput.value.trim();
+  if(message){
+    // Abre WhatsApp con el mensaje escrito
+    window.open(`https://wa.me/50371551908?text=${encodeURIComponent(message)}`, '_blank');
+    chatInput.value = "";
+  }
+});
+</script>
+
+
+
+<!-- Botón flotante de Ubicación -->
+<a href="https://share.google/6krdF9ky3DSevS8m9" 
+   class="location-float" target="_blank" aria-label="Ver ubicación en Google Maps">
+  <i class="fa fa-map-marker"></i>
+</a>
+
+<style>
+ /* Botón Ubicación */
+  .location-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px; /* debajo del de WhatsApp */
+    right: 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .location-float:hover {
+    transform: scale(1.1);
+    background-color: #c0392b;
+  }
+</style>
+
+
+    <!---------------------------------------------------------
+        Wrapper Start
+    ---------------------------------------------------------->
+    <div class="wrapper">
+      <!---------------------------------------------------------
+             Navbar Start
+        ---------------------------------------------------------->
+      <nav class="navbar">
+        <div class="navbar-inner max-width flex">
+          <!---------------------------------------------------------
+                    Logo Start
+                ---------------------------------------------------------->
+          <div class="logo">
+            <h1>Foto Estudio<span class="red-text"> Campos</span></h1>
+          </div>
+
+          <!---------------------------------------------------------
+                    Menubar Start (Nav-lnks)
+                ---------------------------------------------------------->
+          <div class="menubar">
+            <span class="close-menubar-btn"></span>
+            <ul class="flex">
+              <li>
+                <a href="#"><span class="red-text">Inicio</span></a>
+              </li>
+              <li>
+                <a href="#members-section">Mienbros</a>
+              </li>
+              <li>
+                <a href="#gallery-section">Servicios</a>
+              </li>
+              <li>
+                <a href="#testimonials">testimonio</a>
+              </li>
+              <li>
+                <a href="#social-icons">Contacto</a>
+              </li>
+            </ul>
+          </div>
+
+          <!---------------------------------------------------------
+                    Navbar Buttons
+                ---------------------------------------------------------->
+          <div class="navbar-btns">
+          </div>
+        </div>
+      </nav>
+      <!---------------------------------------------------------
+            Navbar End
+        ---------------------------------------------------------->
+
+      <!---------------------------------------------------------
+           Hero Section Start
+        ---------------------------------------------------------->
+      <header>
+        <section id="hero-section" class="flex">
+          <span class="camera-icon"
+            ><i class="fa fa-camera" aria-hidden="true"></i
+          ></span>
+          <h1>
+            Capturando
+            <span class="red-text">Los momentos  </span>que <br />cautivan tu
+            Corazon
+          </h1>
+
+          <div class="input-btn-box">
+         
+          </div>
+        </section>
+      </header>
+      <!---------------------------------------------------------
+             Hero Section End
+        ---------------------------------------------------------->
+
+      <!---------------------------------------------------------
+             Gallery Section Start
+        ---------------------------------------------------------->
+      <section id="gallery-section">
+        <div class="gallery-inner max-width">
+          <h1 class="section-heading">Serv<span class="red-text">icios</span></h1>
+
+          <!---------------------------------------------------------
+                     Gallery Section Menubar
+                ---------------------------------------------------------->
+            <div class="gallery-menubar">
+  <ul class="flex">
+    <li class="active" data-filter="todo">Todo</li>
+    <li data-filter="graduaciones">Graduaciones</li>
+    <li data-filter="15">15 Años</li>
+    <li data-filter="Bodas">Bodas</li>
+  </ul>
+</div>
+          <!---------------------------------------------------------
+                     Gallery Section Images Container
+                ---------------------------------------------------------->
+          <div class="gallery-imgs-container flex">
+            <img
+              src="assets/images/1.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/2.jpg"
+              alt="gallery-image"
+              data-image="Todo"
+            />
+            <img
+              src="assets/images/Promo3.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/Promo4.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/Promo5.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/Promo6.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/Promo7.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/Promo8.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+            <img
+              src="assets/images/Promo.jpg"
+              alt="gallery-image"
+              data-image="todo"
+            />
+          </div>
+        </div>
+      </section>
+      <!---------------------------------------------------------
+             Gallery Section End
+        ----------------------------------------------------------> 
+
+      <!---------------------------------------------------------
+             Testimonials Section Start
+        ---------------------------------------------------------->
+      <section id="testimonials" class="max-width">
+        <div class="testimonials-inner max-width">
+          <h1 class="section-heading">
+            Testi<span class="red-text">monio</span>
+          </h1>
+
+          <!---------------------------------------------------------
+                      Testimonials Section Info
+                ---------------------------------------------------------->
+          <div class="testimonial-info">
+            <h3>Las opiniones de nuestros Clientes</h3>
+            <img src="assets/images/member.png" alt="" />
+            <p>Mi hermana se hizo sus fotos de graduación, yo he sacado varias fotos y la calidad de las fotos son excelentes, las personas que están allí son muy amables y muy sociales, llegas y te hacen plática y tu te sientes cómoda en el lugar por eso y más escojo Foto Studio Campos.<br />
+              Calidad, seguridad y confianza 💛
+            </p>
+            <h2>Michell Cruz Penado</h2>
+          </div>
+        </div>
+      </section>
+      <!---------------------------------------------------------
+             Testimonials Section End
+        ---------------------------------------------------------->
+
+      <!---------------------------------------------------------
+             Members Section Start
+        ---------------------------------------------------------->
+      <section id="members-section">
+        <div class="members-inner max-width">
+          <h1 class="section-heading">
+            Nuestros<span class="red-text">Mienbros</span>
+          </h1>
+
+          <!---------------------------------------------------------
+                   Members Section Images Container    
+                ---------------------------------------------------------->
+          <div class="members-imgs-container flex">
+            <img src="assets/images/team1.jpg" alt="member" />
+            <img src="assets/images/team2.jpg" alt="member" />
+            <img src="assets/images/team3.jpg" alt="member" />
+            <img src="assets/images/team4.jpg" alt="member" />
+          </div>
+        </div>
+      </section>
+      <!---------------------------------------------------------
+            Members Section End
+        ---------------------------------------------------------->
+
+      <!---------------------------------------------------------
+            Social Media Images Start
+        ---------------------------------------------------------->
+      <div class="social-media-images">
+        <a
+          href="https://www.facebook.com/FotoEstudioCampos"
+          target="_blank"
+          ><img src="assets/images/icon1.png" alt="social-icon"
+        /></a>
+        <a href="" target="_blank"
+          ><img src="assets/images/icon2.png" alt="social-icon"
+        /></a>
+        <a href="https://wa.me/+50371551908" target="_blank"
+          ><img src="assets/images/icon3.png" alt="social-icon"
+        /></a>
+
+      </div>
+      <!---------------------------------------------------------
+            Social Media Images End
+        ---------------------------------------------------------->
+
+      <!---------------------------------------------------------
+            Footer Start
+        ---------------------------------------------------------->
+      <footer>
+        <div class="footer-inner max-width">
+          <!---------------------------------------------------------
+                      Footer Subscribe Start
+                ---------------------------------------------------------->
+          
+          <!---------------------------------------------------------
+                      Footer Subscribe End
+                ---------------------------------------------------------->
+
+          <!---------------------------------------------------------
+                      Footer Links Start
+                ---------------------------------------------------------->
+          <div class="footer-infos-row flex">
+            <div class="footer-info-col">
+              <h2>Informacion</h2>
+              <p>
+                Estamos Ubicados Cuadra Abajo del ex Yugo, Calle al INU Usulutan.
+              </p>
+              <div class="social-media-icons">
+                <a
+                  href="https://www.facebook.com/FotoEstudioCampos"
+                  target="_blank"
+                  ><i class="fa fa-facebook" aria-hidden="true"></i
+                ></a>
+                <a
+                  href=""
+                  target="_blank"
+                  ><i class="fa fa-instagram" aria-hidden="true"></i
+                ></a>
+                <a href="https://wa.me/+503000000" target="_blank"
+                  ><i class="fa fa-whatsapp" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+            
+            <div class="footer-info-col">
+              <h2>Servicios Principales</h2>
+              <ul>
+                <li>Toma de Fotografias</li>
+                <li>Toma de video</li>
+                <li>Copias</li>
+                <li>Impresiones Personalizadas</li>
+                <li>Anillados</li>
+              </ul>
+            </div>
+     
+          <!---------------------------------------------------------
+                      Footer Links End
+                ---------------------------------------------------------->
+        </div>
+      </footer>
+      <!---------------------------------------------------------
+            Footer End
+        ---------------------------------------------------------->
+    </div>
+    <!---------------------------------------------------------
+        Wrapper End
+    ---------------------------------------------------------->
+
+    <!--------------------------------------------------------------------------------
+       Javascript Cdns And Files For Icons And Other Sources And External Custom Js Files
+    ---------------------------------------------------------------------------------->
+
+    <!---------------------------------------------------
+       Link External Custom Js Files
+    ----------------------------------------------------->
+    <script defer src="js/index.js"></script>
+  </body>
+</html>

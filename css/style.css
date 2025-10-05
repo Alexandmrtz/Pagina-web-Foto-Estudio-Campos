@@ -1,0 +1,643 @@
+/**********************************************************
+  Add Google Fonts
+**********************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:wght@400;500;600');
+
+
+/**********************************************************
+  Reset Default Properties Start
+**********************************************************/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: 0 0 .4rem rgba(0, 0, 0, 0.288) inset;
+    background-color: var(--white);
+    border-radius: 5rem;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--dark-red);
+    border-radius: 7rem;
+  }
+
+
+
+html {
+    font-size: 62.5%;
+    /* Now 1rem = 10px */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body{
+    overflow: hidden;
+}
+
+
+/**********************************************************
+    Reset Default Properties End
+**********************************************************/
+
+
+/**********************************************************
+    Variables Start
+**********************************************************/
+:root {
+
+    /* Theme Colors */
+    --black: #000;
+    --white: #fff;
+    --dark-red: #ffe600;
+
+
+    /* Theme Fonts */
+    --font-family-1: 'Lato', sans-serif;
+    --font-family-2: 'Nunito', sans-serif;
+}
+
+/**********************************************************
+    Variables End
+**********************************************************/
+
+
+/**********************************************************
+  Common Properties to Frequently Used Elements Start
+**********************************************************/
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+button {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s linear;
+}
+
+li {
+    list-style-type: none;
+    font-family: var(--font-family-2);
+    text-transform: uppercase;
+    transition: all 0.3s linear;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-family-1);
+    text-transform: uppercase;
+}
+
+p {
+    font-family: var(--font-family-2);
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+img {
+    display: inline-block;
+}
+
+/**********************************************************
+  Common Properties to Frequently Used Elements End
+**********************************************************/
+
+
+/*****************************************************************************************
+  Actual Document Styling Start
+*****************************************************************************************/
+
+
+/**********************************************************
+  Styling Position Fixed Elements Start
+**********************************************************/
+
+/**********************************************************
+  Open Menubar Button to Open Menubar On Mobiles
+**********************************************************/
+
+.open-menubar-btn {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--dark-red);
+    z-index: 10;
+}
+
+.open-menubar-btn::before,
+.close-menubar-btn::before {
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    background-color: var(--white);
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.close-menubar-btn {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--white);
+    transform: translate(-50%, -50%) rotate(45deg);
+    left: 50%;
+    top: 0;
+}
+
+.open-menubar-btn,
+.close-menubar-btn {
+    display: none;
+}
+
+.close-menubar-btn::before {
+    background-color: var(--dark-red);
+}
+
+/**********************************************************
+  Styling Position Fixed Elements End
+**********************************************************/
+
+
+/**********************************************************
+  Wrapper Start
+**********************************************************/
+.wrapper {
+    width: 100vw;
+    height: auto;
+}
+
+/**********************************************************
+    Wrapper End
+**********************************************************/
+
+
+/**********************************************************
+  Navbar Start
+**********************************************************/
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    z-index: 10;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+/**********************************************************
+  Navbar Inner
+**********************************************************/
+.navbar-inner {
+    padding: 2rem 0;
+    position: relative;
+}
+
+.navbar-inner .logo h1 {
+    color: var(--black);
+    font-size: 3.2rem;
+}
+
+
+/**********************************************************
+  Menubar Start
+**********************************************************/
+.menubar ul.flex {
+    gap: 3rem;
+}
+
+.menubar ul li a {
+    font-size: 1.6rem;
+    color: var(--black);
+    transition: all 0.3s linear;
+}
+
+@media (hover:hover) {
+    .menubar ul li a:hover {
+        color: var(--dark-red);
+    }
+}
+
+
+/**********************************************************
+  Navbar Buttons Start
+**********************************************************/
+.navbar-btns button {
+    border-radius: 5px;
+    padding: 1.2rem 2rem;
+}
+
+.navbar-btns button:first-child {
+    margin-right: 0.8rem;
+}
+
+/**********************************************************
+  Navbar End
+**********************************************************/
+
+
+/**********************************************************
+  Hero Section Start
+**********************************************************/
+#hero-section {
+    min-height: calc(100vh - 7.6rem);
+    background-image: linear-gradient(#de402e7b, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: changeGradient 16s linear infinite alternate;
+}
+
+#hero-section.flex {
+    justify-content: center;
+    flex-direction: column;
+}
+
+#hero-section .camera-icon {
+    font-size: 6rem;
+    color: var(--white);
+}
+
+#hero-section h1 {
+    color: var(--white);
+    font-size: 5rem;
+    text-shadow: 2px 2px 5px var(--black);
+    margin: 2rem 0 3rem 0;
+    font-variant: small-caps;
+    text-align: center;
+}
+
+#hero-section .input-btn-box {
+    width: 60%;
+    height: 5rem;
+}
+
+#hero-section .input-btn-box input {
+    width: 78%;
+    height: 100%;
+    padding: 1rem;
+    font-size: 1.8rem;
+    background-color: var(--white);
+    border-radius: 5px 0px 0px 5px;
+}
+
+#hero-section .input-btn-box input::placeholder {
+    color: var(--black);
+}
+
+#hero-section .input-btn-box button {
+    width: 22%;
+    height: 100%;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 1.8rem;
+}
+
+/**********************************************************
+  Hero Section End
+**********************************************************/
+
+
+
+/**********************************************************
+  Gallery Section Start
+**********************************************************/
+#gallery-section {
+    padding: 5rem 0;
+}
+
+
+/**********************************************************
+  Gallery Section Menubar
+**********************************************************/
+.gallery-menubar ul.flex {
+    justify-content: center;
+    padding: 3rem 0;
+    gap: 5rem;
+}
+
+.gallery-menubar ul li {
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    transition: all .3s linear;
+    cursor: pointer;
+}
+
+.gallery-menubar ul li.active,
+.gallery-menubar ul li:hover {
+    background-color: var(--dark-red);
+    color: var(--white);
+}
+
+/**********************************************************
+  Gallery Section Images Container
+**********************************************************/
+.gallery-imgs-container img {
+    width: 32%;
+    margin-bottom: 2%;
+    transition: all 0.3s linear;
+}
+
+.gallery-imgs-container img.animate {
+    animation: zoom 0.4s ease-in 1;
+}
+
+@media (hover:hover) {
+
+    .gallery-imgs-container img:hover {
+        filter: drop-shadow(8px 13px 10px rgba(0, 0, 0, 0.9));
+        cursor: pointer;
+    }
+}
+
+/**********************************************************
+  Gallery Section End
+**********************************************************/
+
+
+/**********************************************************
+  Testimonials Section Start
+**********************************************************/
+#testimonials-section {
+    padding: 5rem 0;
+}
+
+/**********************************************************
+  Testimonials Section Info
+**********************************************************/
+.testimonial-info {
+    text-align: center;
+}
+
+.testimonial-info h3 {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+.testimonial-info img {
+    width: 20rem;
+    margin: 2rem 0;
+}
+
+.testimonial-info p {
+    color: var(--dark-red);
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.testimonial-info h2 {
+    font-size: 3rem;
+    margin: 2rem 0;
+}
+
+/**********************************************************
+  Testimonials Section End
+**********************************************************/
+
+
+/**********************************************************
+  Members Section Start
+**********************************************************/
+#members-section {
+    padding: 5rem 0;
+}
+
+.members-imgs-container img {
+    width: 16.66%;
+    transition: all 0.4s linear;
+}
+
+@media (hover:hover) {
+
+    .members-imgs-container img:hover {
+        transform: scale(1.1, 1.1);
+    }
+
+}
+
+/**********************************************************
+  Members Section End
+**********************************************************/
+
+
+/**********************************************************
+  Social Media Images Start
+**********************************************************/
+.social-media-images {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.social-media-images a {
+    margin-inline: 3rem;
+}
+
+.social-media-images img {
+    width: 15rem;
+}
+
+/**********************************************************
+  Social Media Images End
+**********************************************************/
+
+
+
+/**********************************************************
+  Footer Start
+**********************************************************/
+footer {
+    background-color: var(--black);
+    padding: 5rem 0;
+}
+
+.footer-inner .subscribe-email-box {
+    padding: 2rem;
+    border: 2px solid var(--white);
+    margin-bottom: 5rem;
+}
+
+.subscribe-email-left,
+.subscribe-email-right {
+    width: 50%;
+}
+
+.subscribe-email-left h1 {
+    color: var(--dark-red);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.subscribe-email-left p {
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.subscribe-email-right .email-btn-box {
+    width: 90%;
+    height: 5rem;
+    float: right;
+}
+
+.subscribe-email-right .email-btn-box input {
+    width: 75%;
+    height: 100%;
+    padding: 1rem;
+    font-size: 1.8rem;
+    background-color: var(--white);
+    border-radius: 5px 0px 0px 5px;
+}
+
+.subscribe-email-right .email-btn-box button {
+    width: 25%;
+    height: 100%;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 1.8rem;
+}
+
+.footer-infos-row.flex {
+    align-items: flex-start;
+}
+
+.footer-info-col {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-info-col h2 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-info-col p {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: rgb(194, 194, 194);
+}
+
+.footer-info-col .social-media-icons a {
+    font-size: 1.6rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 2px solid rgb(194, 194, 194);
+    color: rgb(194, 194, 194);
+    text-align: center;
+    line-height: 3.6rem;
+    margin: 1rem;
+    transition: all .3s linear;
+}
+
+@media (hover:hover) {
+    .footer-info-col .social-media-icons a:hover {
+        color: var(--black);
+        background-color: var(--white);
+    }
+}
+
+.footer-info-col ul li {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    color: rgb(194, 194, 194);
+}
+
+/**********************************************************
+  Footer End
+**********************************************************/
+
+
+
+/**********************************************************
+  Keyframes For Animations Start
+**********************************************************/
+
+
+/**********************************************************
+  Keyframes to Change Gradient In Hero Section Start
+**********************************************************/
+@keyframes changeGradient {
+    0% {
+        background-image: linear-gradient(0deg, #3836326b, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    }
+
+    20% {
+        background-image: linear-gradient(10deg, #41403a70, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    }
+
+    40% {
+        background-image: linear-gradient(20deg, #4f4d4785, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    }
+
+    60% {
+        background-image: linear-gradient(300deg, #32312e7f, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    }
+
+    80% {
+        background-image: linear-gradient(40deg, #46433f76, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    }
+
+    100% {
+        background-image: linear-gradient(50deg, #3b393576, rgba(0, 0, 0, 0.404)), url("../assets/images/banner1.jpg");
+    }
+}
+
+/**********************************************************
+  Keyframes to Change Gradient In Hero Section End
+**********************************************************/
+
+
+/**********************************************************
+  Keyframes to Zoom Gallery Image When Loaded Start
+**********************************************************/
+@keyframes zoom {
+    from {
+        transform: scale(0.7);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/**********************************************************
+  Keyframes to Zoom Gallery Image When Loaded End
+**********************************************************/
+
+
+/**********************************************************
+  Keyframes For Animations End
+**********************************************************/
+
+
+/*****************************************************************************************
+  Actual Document Styling End
+*****************************************************************************************/
